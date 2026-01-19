@@ -1,0 +1,30 @@
+from django.urls import path
+from .views import UserInfoView, NovelListView, ChapterListView, UserLoginView, UserRegisterView, CommentListCreateView, AddHistoryView, UserHistoryView, UserCommentsView, RechargeView, RechargeApproveView, UnlockChapterView, RechargeRecordListView, NovelManageView, UserManageView, BookshelfAddView, BookshelfRemoveView, BookshelfCheckView, BookshelfListView, UserRechargeMessagesView, UserCommentReplyMessagesView, AnnouncementManageView, AnnouncementListView, RechargeStatsView, NovelCollectionStatsView
+
+urlpatterns = [
+    path('api/user/info/', UserInfoView.as_view()),
+    path('api/novels/', NovelListView.as_view()),
+    path('api/novel/<int:novel_id>/chapters/', ChapterListView.as_view()),
+    path('api/user/login/', UserLoginView.as_view()),
+    path('api/user/register/', UserRegisterView.as_view()),
+    path('api/novel/<int:novel_id>/comments/', CommentListCreateView.as_view()),
+    path('api/user/<int:user_id>/comments/', UserCommentsView.as_view()),
+    path('api/history/add/', AddHistoryView.as_view()),
+    path('api/user/<int:user_id>/history/', UserHistoryView.as_view()),
+    path('api/recharge/', RechargeView.as_view()),
+    path('api/recharge/approve/', RechargeApproveView.as_view()),
+    path('api/unlock-chapter/', UnlockChapterView.as_view()),
+    path('api/recharge/records/', RechargeRecordListView.as_view()),
+    path('api/manage/novel/', NovelManageView.as_view()),
+    path('api/manage/user/', UserManageView.as_view()),
+    path('api/bookshelf/add/', BookshelfAddView.as_view()),
+    path('api/bookshelf/remove/', BookshelfRemoveView.as_view()),
+    path('api/bookshelf/check/', BookshelfCheckView.as_view()),
+    path('api/bookshelf/', BookshelfListView.as_view()),
+    path('api/user/<int:user_id>/recharge-messages/', UserRechargeMessagesView.as_view()),
+    path('api/user/<int:user_id>/comment-replies/', UserCommentReplyMessagesView.as_view()),
+    path('api/manage/announcement/', AnnouncementManageView.as_view()),
+    path('api/announcements/', AnnouncementListView.as_view()),
+    path('api/stats/recharge/', RechargeStatsView.as_view()),
+    path('api/stats/novel-collections/', NovelCollectionStatsView.as_view()),
+] 

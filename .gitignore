@@ -1,0 +1,29 @@
+# 🐍 Python & Django
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite3
+venv/
+env/
+.env
+
+# 🎨 Frontend (Node & Vue)
+frontend/node_modules/
+frontend/dist/
+frontend/.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 💻 IDE & Editor (不要上传你的个人配置)
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 📊 Media & Static (根据需要调整)
+media/
+staticfiles/
+
+# 🛠️ System
+Thumbs.db
