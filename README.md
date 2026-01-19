@@ -1,4 +1,4 @@
-# 小说阅读平台
+<img width="1246" height="628" alt="1f8ec88c24f55db33e603dd4be8023e0" src="https://github.com/user-attachments/assets/5e2df5d8-13c5-40a5-97fb-723b8142af69" /># 小说阅读平台
 
 一个基于Django后端和Vue3前端的现代化小说阅读平台，提供完整的小说阅读、用户管理、评论互动等功能。
 
@@ -145,7 +145,6 @@ npm run dev
 ### 历史记录
 - `POST /api/history/add/` - 添加历史浏览
 
-## 数据库模型
 
 ### 主要表结构
 - **User** - 用户表
@@ -157,35 +156,15 @@ npm run dev
 - **RechargeRecord** - 充值记录表
 - **PaidReadingRecord** - 付费阅读记录表
 
-## 开发说明
-
-### 添加新功能
-1. 在`app01/models.py`中定义数据模型
-2. 在`app01/views.py`中实现API逻辑
-3. 在`app01/urls.py`中注册路由
-4. 在前端`src/views/`中创建页面
-5. 在`src/router/index.js`中添加路由
-
-### 样式规范
-- 主色调：#a67c00（温暖米黄）
-- 背景色：#fffbe6（浅米黄）
-- 强调色：#d4a017（金黄色）
-- 字体：楷体优先，serif备用
-
-### 代码规范
-- 后端：遵循Django最佳实践
-- 前端：使用Vue 3 Composition API
-- 命名：使用驼峰命名法
-- 注释：关键功能添加中文注释
-
-## 部署说明
-
-### 生产环境部署
-1. 配置生产数据库
-2. 设置环境变量
-3. 收集静态文件
-4. 配置Web服务器（Nginx）
-5. 使用Gunicorn运行Django
-6. 构建前端生产版本
 
 系统采用了 Redis 对小说列表接口进行了 60 秒的缓存策略，有效减轻数据库压力。 充值流程采用 申请 -> 审核 机制，保障资金安全。 评论系统支持多级回复展示。  如果没有redis服务，可以去app01/views.py注释redis连接
+数据来源说明：本系统所有小说数据均通过 get_novel.py 脚本对公开的小说平台进行合法采集。采集过程严格遵循相关平台的 robots.txt 协议，仅用于展示开发技术及后端逻辑实现。
+
+系统部分页面：
+<img width="1246" height="628" alt="1f8ec88c24f55db33e603dd4be8023e0" src="https://github.com/user-attachments/assets/31cb6e0f-fd36-402e-ab4f-80a6b0b3acdd" />
+<img width="1161" height="624" alt="40a0291cb7c8fbc056cd28f66e831638" src="https://github.com/user-attachments/assets/e1d58578-a37f-4f19-8949-54c0f493909b" />
+<img width="777" height="603" alt="ce80ba946072cc86fde131820d740d3f" src="https://github.com/user-attachments/assets/7d747c01-32e7-4317-bbe5-b6f39bd58266" />
+<img width="753" height="634" alt="e9c26f0afaa0e5568e80ec9cbb390c28" src="https://github.com/user-attachments/assets/176ed783-ceaa-4d33-bf9a-656c3e328a75" />
+
+
+
