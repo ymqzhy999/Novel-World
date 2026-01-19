@@ -160,11 +160,8 @@ npm run dev
 系统采用了 Redis 对小说列表接口进行了 60 秒的缓存策略，有效减轻数据库压力。 充值流程采用 申请 -> 审核 机制，保障资金安全。 评论系统支持多级回复展示。  如果没有redis服务，可以去app01/views.py注释redis连接
 数据来源说明：本系统所有小说数据均通过 get_novel.py 脚本对公开的小说平台进行合法采集。采集过程严格遵循相关平台的 robots.txt 协议，仅用于展示开发技术及后端逻辑实现。
 
-系统部分页面：
-<img width="1246" height="628" alt="1f8ec88c24f55db33e603dd4be8023e0" src="https://github.com/user-attachments/assets/31cb6e0f-fd36-402e-ab4f-80a6b0b3acdd" />
 <img width="1161" height="624" alt="40a0291cb7c8fbc056cd28f66e831638" src="https://github.com/user-attachments/assets/e1d58578-a37f-4f19-8949-54c0f493909b" />
-<img width="777" height="603" alt="ce80ba946072cc86fde131820d740d3f" src="https://github.com/user-attachments/assets/7d747c01-32e7-4317-bbe5-b6f39bd58266" />
-<img width="753" height="634" alt="e9c26f0afaa0e5568e80ec9cbb390c28" src="https://github.com/user-attachments/assets/176ed783-ceaa-4d33-bf9a-656c3e328a75" />
+
 
 
 
