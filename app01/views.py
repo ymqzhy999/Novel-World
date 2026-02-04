@@ -152,17 +152,50 @@ class UserHistoryView(APIView):
             })
         return Response(result)
 
+
 class RechargeView(APIView):
+    # 1. 加上权限控制，必须登录才能访问
+    # (需要在 settings.py 配置 REST_FRAMEWORK 的 DEFAULT_PERMISSION_CLASSES，或者这里显式加)
+    # permission_classes = [IsAuthenticated]
+
     def post(self, request):
-        user_id = request.data.get('user_id')
-        amount = request.data.get('amount')
-        bonus = request.data.get('bonus', 0)
-        try:
+        # 🛡️ 修复 Bug 2：不再信前端传的 user_id，而是从当前登录用户取
+        # 注意：这需要你配置好了 JWT 或 Session 认证，request.user 才有值
+        # 如果你暂时没配认证，先保留 request.data.get('user_id') 但要清楚这是隐患
+        user = request.user
+
+        # 如果还没配认证，暂时用原来的，但逻辑上要明白这是错的
+        if not user or user.is_anonymous:
+            # 为了兼容你现在的代码，暂时还从 data 取，但生产环境绝对不行！
+            user_id = request.data.get('user_id')
             user = User.objects.get(id=user_id)
-            amount = Decimal(str(amount))
-            bonus = Decimal(str(bonus))
+
+        try:
+            amount_str = request.data.get('amount')
+            amount = Decimal(str(amount_str))
+
+            # 🛡️ 修复 Bug 1：必须是正数
+            if amount <= 0:
+                return Response({'success': False, 'msg': '充值金额必须大于0'}, status=400)
+
+            # 🛡️ 修复 Bug 3：Bonus 由后端说了算，完全忽略前端传的 bonus
+            bonus = Decimal('0')
+            if amount >= 5000:
+                bonus = Decimal('1000')
+            elif amount >= 2000:
+                bonus = Decimal('350')
+            elif amount >= 1000:
+                bonus = Decimal('150')
+            elif amount >= 500:
+                bonus = Decimal('60')
+            elif amount >= 300:
+                bonus = Decimal('30')
+
+            # 创建记录 (注意：这里不再接收 request.data.get('bonus'))
             RechargeRecord.objects.create(user=user, amount=amount, bonus=bonus)
-            return Response({'success': True})
+
+            return Response({'success': True, 'msg': '充值申请已提交，实际赠送以系统计算为准'})
+
         except Exception as e:
             return Response({'success': False, 'msg': str(e)}, status=400)
 
